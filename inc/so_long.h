@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 23:54:08 by bmetehri          #+#    #+#             */
-/*   Updated: 2023/10/25 03:00:02 by bmetehri         ###   ########.fr       */
+/*   Updated: 2023/10/26 20:23:25 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define SO_LONG_H
 
 # include "../mlx/mlx.h"
+# include <unistd.h>
 
 typedef struct s_data
 {
@@ -21,10 +22,19 @@ typedef struct s_data
 	void	*win_ptr;
 }	t_data;
 
+typedef struct s_coordinate
+{
+	int	x;
+	int	y;
+}	t_coordinate;
+
 /*
 	Testing out some stuff
 */
 void	draw_square(t_data data, int x, int y, int colors);
+void	draw_phrase(t_data data, t_coordinate cds, int colors, char *message);
+void	clear_window(t_data data);
+void	destroy_window(t_data data);
 
 /*
 	Colors
