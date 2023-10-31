@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 08:06:34 by bmetehri          #+#    #+#             */
-/*   Updated: 2023/10/31 11:25:42 by bmetehri         ###   ########.fr       */
+/*   Updated: 2023/10/31 13:42:10 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,3 +29,12 @@ void	check_args(int ac, char **av)
 	if (open(av[1], O_RDONLY) == -1)
 		return (perror("Error"), exit(1));
 }
+
+// t_map	create_map(t_data data, char *filename)
+// {
+// 	int	fd;
+// 	char	*buf;
+
+// 	fd = open(filename, O_RDONLY);
+// 	return ();
+// }

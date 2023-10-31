@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 23:54:08 by bmetehri          #+#    #+#             */
-/*   Updated: 2023/10/31 11:43:00 by bmetehri         ###   ########.fr       */
+/*   Updated: 2023/10/31 13:05:07 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ typedef struct s_player
 typedef struct s_boundary
 {
 	t_coordinate	position;
+	int				width;
+	int				height;
 
 }	t_boundary;
 
@@ -50,13 +52,14 @@ typedef struct s_map
 	t_player	player;
 	int			width;
 	int			height;
-	t_boundary	*boundaries;
+	t_boundary	*boundaries[];
 }	t_map;
 
 /*
 	Parsing Map
 */
 void	check_args(int ac, char **av);
+t_map	create_map(t_data data, char *filename);
 
 /*
 	Testing_one out some stuff
