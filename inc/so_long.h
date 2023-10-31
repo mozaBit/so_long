@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 23:54:08 by bmetehri          #+#    #+#             */
-/*   Updated: 2023/10/31 09:20:33 by bmetehri         ###   ########.fr       */
+/*   Updated: 2023/10/31 11:43:00 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "../ft_printf/include/ft_printf.h"
 # include "../get_next_line/get_next_line.h"
 # include <unistd.h>
+# include <stdio.h>
 # include <errno.h>
 # include <math.h>
 
@@ -32,6 +33,30 @@ typedef struct s_coordinate
 	int	x;
 	int	y;
 }	t_coordinate;
+
+typedef struct s_player
+{
+	t_coordinate	position;
+}	t_player;
+
+typedef struct s_boundary
+{
+	t_coordinate	position;
+
+}	t_boundary;
+
+typedef struct s_map
+{
+	t_player	player;
+	int			width;
+	int			height;
+	t_boundary	*boundaries;
+}	t_map;
+
+/*
+	Parsing Map
+*/
+void	check_args(int ac, char **av);
 
 /*
 	Testing_one out some stuff
