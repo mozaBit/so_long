@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 23:54:08 by bmetehri          #+#    #+#             */
-/*   Updated: 2023/10/26 20:23:25 by bmetehri         ###   ########.fr       */
+/*   Updated: 2023/10/31 08:09:55 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include "../mlx/mlx.h"
 # include <unistd.h>
+# include <errno.h>
+# include <math.h>
 
 typedef struct s_data
 {
@@ -29,12 +31,26 @@ typedef struct s_coordinate
 }	t_coordinate;
 
 /*
-	Testing out some stuff
+	Testing_one out some stuff
 */
 void	draw_square(t_data data, int x, int y, int colors);
 void	draw_phrase(t_data data, t_coordinate cds, int colors, char *message);
 void	clear_window(t_data data);
 void	destroy_window(t_data data);
+
+/*
+	Testing_two out some stuff
+*/
+void	*create_image(t_data data, int width, int height);
+void	*xpm_to_image(t_data data, char **xpm_data, int *width, int *height);
+void	*file_to_image(t_data data, char *filename, int *width, int *height);
+int		destroy_image(t_data data, void *img_ptr);
+int		draw_image(t_data data, void *img_ptr, int x, int y);
+
+/*
+	Testing_three out some stuff
+*/
+char	*get_image_info(void *img_ptr, int *bpp, int *sizeline, int *endian);
 
 /*
 	Colors
