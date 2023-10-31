@@ -13,6 +13,9 @@ RM = rm -f
 RMDIR = rm -rf
 NAME = so_long
 NAME_B = so_long_bonus
+LIBFT = libft/libft.a
+PRINTF = ft_printf/libftprintf.a
+GNL = get_next_line/gnl.a
 
 all : $(NAME)
 
@@ -30,10 +33,10 @@ $(O)/%.o : $(B)/%.c
 		$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJ)
-		$(CC) $(CFLAGS) $(OBJ) -Lmlx -lmlx -L/usr/lib -Imlx -lXext -lX11 -lm -lz -o $@
+		$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(PRINTF) $(GNL) -Lmlx -lmlx -L/usr/lib -Imlx -lXext -lX11 -lm -lz -o $@
 
 $(NAME_B): $(OBJ)
-		$(CC) $(CFLAGS) $(OBJ) -Lmlx -lmlx -L/usr/lib -Imlx -lXext -lX11 -lm -lz -o $@
+		$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(PRINTF) $(GNL) -Lmlx -lmlx -L/usr/lib -Imlx -lXext -lX11 -lm -lz -o $@
 
 cleanobj:
 		$(RM) $(wildcard $(O)/*.o)

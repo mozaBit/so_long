@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 23:54:08 by bmetehri          #+#    #+#             */
-/*   Updated: 2023/10/31 08:09:55 by bmetehri         ###   ########.fr       */
+/*   Updated: 2023/10/31 09:20:33 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define SO_LONG_H
 
 # include "../mlx/mlx.h"
+# include "../libft/libft.h"
+# include "../ft_printf/include/ft_printf.h"
+# include "../get_next_line/get_next_line.h"
 # include <unistd.h>
 # include <errno.h>
 # include <math.h>
@@ -71,5 +74,18 @@ char	*get_image_info(void *img_ptr, int *bpp, int *sizeline, int *endian);
 # define NAVY 0x000080
 # define FUCHSIA 0xFF00FF
 # define PURPLE 0x800080
+
+/*
+	Keys
+*/
+# define XK_SW 0x0077  /* U+0077 LATIN SMALL LETTER W */
+# define XK_SA 0x0061  /* U+0061 LATIN SMALL LETTER A */
+# define XK_SS 0x0073  /* U+0073 LATIN SMALL LETTER S */
+# define XK_SD 0x0064  /* U+0064 LATIN SMALL LETTER D */
+
+# define XK_LEFT  0xff51  /* Move left, left arrow */
+# define XK_UP    0xff52  /* Move up, up arrow */
+# define XK_RIGHT 0xff53  /* Move right, right arrow */
+# define XK_DOWN  0xff54  /* Move down, down arrow */
 
 #endif
