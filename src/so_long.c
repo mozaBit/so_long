@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 23:51:09 by bmetehri          #+#    #+#             */
-/*   Updated: 2023/10/31 13:43:30 by bmetehri         ###   ########.fr       */
+/*   Updated: 2023/11/01 18:40:26 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,10 @@ int	main(int ac, char **av)
 	text_xy.x = 50;
 	text_xy.y = 50;
 	draw_phrase(data, text_xy, WHITE, "Hello There !");
-	sleep(5);
+	sleep(1);
 	clear_window(data);
-	sleep(2);
+	sleep(1);
+	create_map(data, av[1]);
 	destroy_window(data);
 	mlx_loop(data.mlx_ptr);
 	return (0);

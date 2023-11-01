@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 23:54:08 by bmetehri          #+#    #+#             */
-/*   Updated: 2023/10/31 13:05:07 by bmetehri         ###   ########.fr       */
+/*   Updated: 2023/11/01 21:21:52 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,52 +36,59 @@ typedef struct s_coordinate
 
 typedef struct s_player
 {
-	t_coordinate	position;
+	t_coordinate	*position;
+	int				width;
+	int				height;
 }	t_player;
 
 typedef struct s_boundary
 {
-	t_coordinate	position;
-	int				width;
-	int				height;
-
+	t_coordinate	*position;
+	// int				width;
+	// int				height;
 }	t_boundary;
 
 typedef struct s_map
 {
-	t_player	player;
+	t_player	*player;
 	int			width;
 	int			height;
-	t_boundary	*boundaries[];
+	t_boundary	**boundaries;
 }	t_map;
 
 /*
 	Parsing Map
 */
-void	check_args(int ac, char **av);
-t_map	create_map(t_data data, char *filename);
+void		check_args(int ac, char **av);
+void		create_map(t_data data, char *filename);
+char		*get_my_map_str(int fd);
+t_player	*get_player(char	*my_map);
+t_boundary	**get_boundaries(char *my_map_str);
+t_boundary	*append_to_row(t_boundary *row, int x, int y);
+
 
 /*
 	Testing_one out some stuff
 */
-void	draw_square(t_data data, int x, int y, int colors);
-void	draw_phrase(t_data data, t_coordinate cds, int colors, char *message);
-void	clear_window(t_data data);
-void	destroy_window(t_data data);
+void		draw_square(t_data data, int x, int y, int colors);
+void		draw_phrase(t_data data, t_coordinate cds, int colors, char *message);
+void		clear_window(t_data data);
+void		destroy_window(t_data data);
 
 /*
 	Testing_two out some stuff
 */
-void	*create_image(t_data data, int width, int height);
-void	*xpm_to_image(t_data data, char **xpm_data, int *width, int *height);
-void	*file_to_image(t_data data, char *filename, int *width, int *height);
-int		destroy_image(t_data data, void *img_ptr);
-int		draw_image(t_data data, void *img_ptr, int x, int y);
+void		*create_image(t_data data, int width, int height);
+void		*xpm_to_image(t_data data, char **xpm_data, int *width, int *height);
+void		*file_to_image(t_data data, char *filename, int *width, int *height);
+int			destroy_image(t_data data, void *img_ptr);
+int			draw_image(t_data data, void *img_ptr, int x, int y);
 
 /*
 	Testing_three out some stuff
 */
-char	*get_image_info(void *img_ptr, int *bpp, int *sizeline, int *endian);
+char		*get_image_info(void *img_ptr, int *bpp, int *sizeline, int *endian);
+int			num_occurances_c(char *str ,char c);
 
 /*
 	Colors
