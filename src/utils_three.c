@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 07:31:17 by bmetehri          #+#    #+#             */
-/*   Updated: 2023/11/01 20:52:59 by bmetehri         ###   ########.fr       */
+/*   Updated: 2023/11/12 23:09:32 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,38 @@ int	num_occurances_c(char *str ,char c)
 		str++;
 	}
 	return (occ);
+}
+void	error_print(char *msg, t_game *game)
+{
+	if (game->map_allocated == true)
+		free_map(game);
+	free(game);
+	ft_printf(P_RED"%s\n"RESET, msg);
+	exit(1);
+}
+
+void	check_map_errors(char *map, t_game *game)
+{
+	int	idx;
+
+	idx = 0;
+	if (map[0] == '\n')
+	{
+		free(map);
+		error_print("Error: Invalid Map: Map cannot start with \\n", game);
+	}
+	if (map[ft_strlen2(map) - 1] == '\n')
+	{
+		free(map);
+		error_print("Error: Invalid Map: Map cannot terminate with \\n", game);
+	}
+	while (map[idx + 1])
+	{
+		if (map[idx] == '\n' && map[idx + 1] == '\n')
+		{
+			free(map);
+			error_print("Error: Invalid Map: Map cannot have two consicutives \\n", game);
+		}
+		idx++;
+	}
 }

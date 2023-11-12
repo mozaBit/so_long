@@ -6,28 +6,30 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 23:51:09 by bmetehri          #+#    #+#             */
-/*   Updated: 2023/11/01 18:40:26 by bmetehri         ###   ########.fr       */
+/*   Updated: 2023/11/12 22:02:56 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-// int	main(int ac, char **av)
-// {
-// 	// t_map	*my_map;
-// 	t_data	data;
+int	main(int ac, char **av)
+{
+	t_game	*game;
 
-// 	check_args(ac, av);
-// 	data.mlx_ptr = mlx_init();
-// 	// my_map = create_map(&data, av[1]);
-// }
+	game = malloc(sizeof(t_game));
+	if (!game)
+		return (1);
+	ft_check_args(ac, av, game);
+
+	return (0);
+}
 
 /*
 
 	** Testing ...
 	void *
 	mlx_new_window(void *mlx_ptr, int size_x, int size_y, char *title);
-*/
+
 int	main(int ac, char **av)
 {
 	t_data			data;
@@ -48,4 +50,4 @@ int	main(int ac, char **av)
 	mlx_loop(data.mlx_ptr);
 	return (0);
 }
-
+*/
