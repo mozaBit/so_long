@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 23:54:08 by bmetehri          #+#    #+#             */
-/*   Updated: 2023/11/13 00:06:30 by bmetehri         ###   ########.fr       */
+/*   Updated: 2023/11/13 04:35:39 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 # include <unistd.h>
 # include <stdbool.h>
 # include <errno.h>
+# include <fcntl.h>
+# include <X11/X.h>
+# include <X11/keysym.h>
 # include <math.h>
 
 typedef struct s_data
@@ -78,8 +81,9 @@ typedef struct s_game
 void		ft_check_args(int ac, char **av, t_game *game);
 void		init_map(char *av, t_game *game);
 void		vars_init(t_game *game);
-void		create_map(t_data data, char *filename);
-char		*get_my_map_str(int fd);
+void		check_map(t_game *game);
+// void		create_map(t_data data, char *filename);
+// char		*get_my_map_str(int fd);
 
 
 /*
@@ -106,6 +110,31 @@ char		*get_image_info(void *img_ptr, int *bpp, int *sizeline, int *endian);
 int			num_occurances_c(char *str ,char c);
 void		error_print(char *msg, t_game *game);
 void		check_map_errors(char *map, t_game *game);
+
+/*
+	Initializers
+*/
+t_image		init_new_sprite(void	*mlx, char *path, t_game *game);
+void		initilize_mlx(t_game *game);
+void		initialize_sheets(t_game *game);
+
+/*
+	Checkers
+*/
+void		check_rows(t_game *game);
+void		check_columns(t_game *game);
+void		count_params(t_game *game);
+void		verify_params(t_game *game);
+
+/*
+	Rendering
+*/
+void		render_spritesheet(t_game *game, t_image img, int j, int i);
+void		get_spritesheet(t_game *game, int i, int j);
+int			render_everything(t_game *game);
+void		render_character(t_game *game, int j, int i);
+void		print_movements(t_game *game);
+
 
 /*
 	Colors
@@ -137,26 +166,47 @@ void		check_map_errors(char *map, t_game *game);
 # define RESET 				"\033[0m"
 
 /*
+	Character Positions
+*/
+# define FRONT		1
+# define BACK		2
+# define RIGHT		3
+# define LEFT		4
+
+/*
 	Keys
 */
-# define XK_SW 0x0077  /* U+0077 LATIN SMALL LETTER W */
-# define XK_SA 0x0061  /* U+0061 LATIN SMALL LETTER A */
-# define XK_SS 0x0073  /* U+0073 LATIN SMALL LETTER S */
-# define XK_SD 0x0064  /* U+0064 LATIN SMALL LETTER D */
+# define KEY_SW 0x0077  /* U+0077 LATIN SMALL LETTER W */
+# define KEY_SA 0x0061  /* U+0061 LATIN SMALL LETTER A */
+# define KEY_SS 0x0073  /* U+0073 LATIN SMALL LETTER S */
+# define KEY_SD 0x0064  /* U+0064 LATIN SMALL LETTER D */
 
-# define XK_CW 0x0057  /* U+0057 LATIN CAPITAL LETTER W */
-# define XK_CA 0x0041  /* U+0041 LATIN CAPITAL LETTER A */
-# define XK_CS 0x0053  /* U+0053 LATIN CAPITAL LETTER S */
-# define XK_CD 0x0044  /* U+0044 LATIN CAPITAL LETTER D */
+# define KEY_CW 0x0057  /* U+0057 LATIN CAPITAL LETTER W */
+# define KEY_CA 0x0041  /* U+0041 LATIN CAPITAL LETTER A */
+# define KEY_CS 0x0053  /* U+0053 LATIN CAPITAL LETTER S */
+# define KEY_CD 0x0044  /* U+0044 LATIN CAPITAL LETTER D */
 
-# define XK_LEFT  0xff51  /* Move left, left arrow */
-# define XK_UP    0xff52  /* Move up, up arrow */
-# define XK_RIGHT 0xff53  /* Move right, right arrow */
-# define XK_DOWN  0xff54  /* Move down, down arrow */
+# define KEY_LEFT  0xff51  /* Move left, left arrow */
+# define KEY_UP    0xff52  /* Move up, up arrow */
+# define KEY_RIGHT 0xff53  /* Move right, right arrow */
+# define KEY_DOWN  0xff54  /* Move down, down arrow */
 
-# define XK_CQ		0x0051	/* U+0051 LATIN CAPITAL LETTER W */
-# define XK_SQ		0x0071	/* U+0071 LATIN SMALL LETTER W */
-# define XK_ESC		0xff1b  /* Escape Char */
+# define KEY_CQ		0x0051	/* U+0051 LATIN CAPITAL LETTER W */
+# define KEY_SQ		0x0071	/* U+0071 LATIN SMALL LETTER W */
+# define KEY_ESC		0xff1b  /* Escape Char */
+
+/*
+	SpriteSheets
+*/
+# define BOUNDARY_XPM		"imgs/ground/boundary.xpm"
+# define GROUND_XPM			"imgs/ground/ground.xpm"
+# define COLLECTABLE_XPM	"imgs/collectable/coins.xpm"
+# define P_FRONT_XPM		"imgs/sprite/front.xpm"
+# define P_BACK_XPM			"imgs/sprite/back.xpm"
+# define P_RIGHT_XPM		"imgs/sprite/right.xpm"
+# define P_LEFT_XPM			"imgs/sprite/left.xpm"
+# define O_EXIT				"imgs/sprite/o_exit.xpm"
+# define C_EXIT				"imgs/sprite/c_exit.xpm"
 
 /*
 	Terms

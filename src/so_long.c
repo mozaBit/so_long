@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 23:51:09 by bmetehri          #+#    #+#             */
-/*   Updated: 2023/11/13 00:07:31 by bmetehri         ###   ########.fr       */
+/*   Updated: 2023/11/13 04:29:27 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,13 @@ int	main(int ac, char **av)
 	init_map(av[1], game);
 	vars_init(game);
 	check_map(game);
+	initilize_mlx(game);
+	initialize_sheets(game);
+	render_everything(game);
+	mlx_hook(game->win_ptr, KeyPress, KeyPressMask, handle_input, game);
+	mlx_hook(game->win_ptr, DestroyNotify, ButtonPressMask, close_game, game);
+	mlx_hook(game->win_ptr, Expose, ExposureMask, render_everything, game);
+	mlx_loop(game->win_ptr);
 	return (0);
 }
 

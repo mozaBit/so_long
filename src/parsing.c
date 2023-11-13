@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 08:06:34 by bmetehri          #+#    #+#             */
-/*   Updated: 2023/11/13 00:09:25 by bmetehri         ###   ########.fr       */
+/*   Updated: 2023/11/13 04:01:12 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,10 @@ void	vars_init(t_game *game)
 	game->map.exit = 0;
 	game->map.columns = ft_strlen3(game->map.map_strs[0]) - 1;
 	game->movements = 0;
-	game->character_sheet = 3;
+	game->character_sheet = FRONT;
 }
 
-void	check_map(t_game game)
+void	check_map(t_game *game)
 {
 	check_rows(game);
 	check_columns(game);
