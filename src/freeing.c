@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:25:46 by bmetehri          #+#    #+#             */
-/*   Updated: 2023/11/13 18:52:39 by bmetehri         ###   ########.fr       */
+/*   Updated: 2023/11/13 19:50:20 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	free_stuffs(t_game *game)
 	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 	mlx_destroy_display(game->mlx_ptr);
 	free(game->mlx_ptr);
-	free(game->win_ptr);
 	free(game);
 }
 
