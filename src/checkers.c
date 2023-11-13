@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 00:09:34 by bmetehri          #+#    #+#             */
-/*   Updated: 2023/11/13 18:48:38 by bmetehri         ###   ########.fr       */
+/*   Updated: 2023/11/13 20:52:51 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,16 @@ void	count_params(t_game *game)
 		while (i < game->map.columns)
 		{
 			if (!ft_strchr("10PEC", game->map.map_strs[j][i]))
-				error_print("Error: Invalid Map: Invalid Map Indicator", game);
-			if (game->map.map_strs[j][i] == CHARACTER)
+				error_print("Error\n Invalid Map: Invalid Map Indicator", game);
+			if (game->map.map_strs[j][i] == CHARACTER && !is_s(game, i, j))
 			{
 				game->map.characters++;
 				game->map.character.x = i;
 				game->map.character.y = j;
 			}
-			if (game->map.map_strs[j][i] == COLLECTABLE)
+			if (game->map.map_strs[j][i] == COLLECTABLE && !is_s(game, i, j))
 				game->map.collectables++;
-			if (game->map.map_strs[j][i] == M_EXIT)
+			if (game->map.map_strs[j][i] == M_EXIT && !is_s(game, i, j))
 				game->map.exit++;
 			i++;
 		}

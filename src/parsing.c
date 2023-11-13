@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 08:06:34 by bmetehri          #+#    #+#             */
-/*   Updated: 2023/11/13 19:20:03 by bmetehri         ###   ########.fr       */
+/*   Updated: 2023/11/13 20:52:48 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,32 @@ void	check_map(t_game *game)
 	check_columns(game);
 	count_params(game);
 	verify_params(game);
+}
+
+int	is_s(t_game *game, int target_i, int target_j)
+{
+	int	i;
+	int	j;
+
+	i = target_i - 1;
+	while (i <= target_i + 1)
+	{
+		j = target_j - 1;
+		while (j <= target_j + 1)
+		{
+			if (j >= 0 && j < game->map.rows && i >= 0 && i < game->map.columns)
+			{
+				if (game->map.map_strs[j][i] != BOUNDARY
+					&& !(i == target_i && j == target_j))
+					return (0);
+			}
+			else
+			{
+				return (error_print("Error\n Item surronded", game), 1);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (error_print("Error\n Item surronded", game), 1);
 }

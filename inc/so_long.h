@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 23:54:08 by bmetehri          #+#    #+#             */
-/*   Updated: 2023/11/13 18:57:28 by bmetehri         ###   ########.fr       */
+/*   Updated: 2023/11/13 20:52:41 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ void	ft_check_args(int ac, char **av, t_game *game);
 void	init_map(char *av, t_game *game);
 void	vars_init(t_game *game);
 void	check_map(t_game *game);
+int		is_s(t_game *game, int target_i, int target_j);
 
 /*
 	Testing_one out some stuff
