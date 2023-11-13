@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 07:31:17 by bmetehri          #+#    #+#             */
-/*   Updated: 2023/11/13 18:18:26 by bmetehri         ###   ########.fr       */
+/*   Updated: 2023/11/13 18:47:46 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,22 @@ char	*get_image_info(void *img_ptr, int *bpp, int *sizeline, int *endian)
 	return (mlx_get_data_addr(img_ptr, bpp, sizeline, endian));
 }
 
-int	num_occurances_c(char *str ,char c)
+int	num_occurances_c(char *str, char c)
 {
 	int	occ;
 
 	if (!str)
 		return (0);
 	occ = 0;
-	while (*str){
+	while (*str)
+	{
 		if (*str == c)
 			occ++;
 		str++;
 	}
 	return (occ);
 }
+
 void	error_print(char *msg, t_game *game)
 {
 	if (game->map_allocated == true)
@@ -66,7 +68,8 @@ void	check_map_errors(char *map, t_game *game)
 		if (map[idx] == '\n' && map[idx + 1] == '\n')
 		{
 			free(map);
-			error_print("Error: Invalid Map: Map cannot have two consicutives \\n", game);
+			error_print("Error: Invalid Map: Map \
+cannot have two consicutives \\n", game);
 		}
 		idx++;
 	}

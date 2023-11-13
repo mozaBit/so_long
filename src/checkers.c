@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 00:09:34 by bmetehri          #+#    #+#             */
-/*   Updated: 2023/11/13 17:40:50 by bmetehri         ###   ########.fr       */
+/*   Updated: 2023/11/13 18:48:38 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,11 @@ void	count_params(t_game *game)
 void	verify_params(t_game *game)
 {
 	if (game->map.collectables == 0)
-		error_print("Error: Inavlid Map: Map must contains at least one collectable", game);
+		error_print("Error: Inavlid Map: Map must \
+contains at least one collectable", game);
 	if (game->map.exit == 0)
 		error_print("Error: Inavlid Map: Map must contains an exit", game);
 	if (game->map.characters != 1)
-		error_print("Error: Inavlid Map: Map must contains at most a player", game);
-
+		error_print("Error: Inavlid Map: Map \
+must contains at most a player", game);
 }

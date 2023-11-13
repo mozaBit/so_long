@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 03:31:03 by bmetehri          #+#    #+#             */
-/*   Updated: 2023/11/13 17:24:26 by bmetehri         ###   ########.fr       */
+/*   Updated: 2023/11/13 18:46:18 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ int	render_everything(t_game *game)
 
 void	render_spritesheet(t_game *game, t_image img, int j, int i)
 {
-	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, img.xpm_ptr, i * img.x, j * img.y);
+	mlx_put_image_to_window(game->mlx_ptr, \
+	game->win_ptr, img.xpm_ptr, i * img.x, j * img.y);
 }
 
 void	get_spritesheet(t_game *game, int i, int j)

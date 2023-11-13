@@ -6,14 +6,14 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:25:46 by bmetehri          #+#    #+#             */
-/*   Updated: 2023/11/13 18:14:24 by bmetehri         ###   ########.fr       */
+/*   Updated: 2023/11/13 18:52:39 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-void end_imgs(t_game *game);
-void free_maps(t_game *game);
+void	end_imgs(t_game *game);
+void	free_maps(t_game *game);
 void	free_stuffs(t_game *game);
 
 void	free_stuffs(t_game *game)
@@ -25,10 +25,9 @@ void	free_stuffs(t_game *game)
 	free(game->mlx_ptr);
 	free(game->win_ptr);
 	free(game);
-
 }
 
-void end_imgs(t_game *game)
+void	end_imgs(t_game *game)
 {
 	mlx_destroy_image(game->mlx_ptr, game->boundary.xpm_ptr);
 	mlx_destroy_image(game->mlx_ptr, game->ground.xpm_ptr);
@@ -41,9 +40,9 @@ void end_imgs(t_game *game)
 	mlx_destroy_image(game->mlx_ptr, game->collectable.xpm_ptr);
 }
 
-void free_maps(t_game *game)
+void	free_maps(t_game *game)
 {
-	int c;
+	int	c;
 
 	c = 0;
 	while (c < game->map.rows)

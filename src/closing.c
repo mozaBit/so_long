@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:15:46 by bmetehri          #+#    #+#             */
-/*   Updated: 2023/11/13 18:13:26 by bmetehri         ###   ########.fr       */
+/*   Updated: 2023/11/13 18:51:02 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	victory(t_game *game)
 	exit (0);
 }
 
-int close_game(t_game *game)
+int	close_game(t_game *game)
 {
 	ft_printf(P_GREEN"\nMovements: %d\n"RESET, game->movements);
 	free_stuffs(game);

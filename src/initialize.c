@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 01:02:34 by bmetehri          #+#    #+#             */
-/*   Updated: 2023/11/13 17:55:43 by bmetehri         ###   ########.fr       */
+/*   Updated: 2023/11/13 18:46:00 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ t_image	init_new_sprite(void *mlx, char *path, t_game *game)
 {
 	t_image	spritesheet;
 
-	spritesheet.xpm_ptr = mlx_xpm_file_to_image(mlx, path, &spritesheet.x, &spritesheet.y);
+	spritesheet.xpm_ptr = mlx_xpm_file_to_image(mlx, \
+	path, &spritesheet.x, &spritesheet.y);
 	if (!spritesheet.xpm_ptr)
 		error_print("Error: Failed to create a spritesheet", game);
 	return (spritesheet);
