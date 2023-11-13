@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 23:54:08 by bmetehri          #+#    #+#             */
-/*   Updated: 2023/11/13 04:35:39 by bmetehri         ###   ########.fr       */
+/*   Updated: 2023/11/13 18:19:32 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ char		*get_image_info(void *img_ptr, int *bpp, int *sizeline, int *endian);
 int			num_occurances_c(char *str ,char c);
 void		error_print(char *msg, t_game *game);
 void		check_map_errors(char *map, t_game *game);
+char		*ft_strappend(char **s1, const char *s2);
 
 /*
 	Initializers
@@ -129,12 +130,31 @@ void		verify_params(t_game *game);
 /*
 	Rendering
 */
+void		print_movements(t_game *game);
+int			render_everything(t_game *game);
 void		render_spritesheet(t_game *game, t_image img, int j, int i);
 void		get_spritesheet(t_game *game, int i, int j);
-int			render_everything(t_game *game);
 void		render_character(t_game *game, int j, int i);
-void		print_movements(t_game *game);
 
+/*
+	Handlers
+*/
+void		player_move(t_game *game, int n_j, int n_i, int sprite);
+int			handle_input(int key, t_game *game);
+
+/*
+	Closing game
+*/
+int			victory(t_game *game);
+int 		close_game(t_game *game);
+
+/*
+	freeing
+*/
+
+void 		end_imgs(t_game *game);
+void 		free_maps(t_game *game);
+void		free_stuffs(t_game *game);
 
 /*
 	Colors
@@ -205,8 +225,8 @@ void		print_movements(t_game *game);
 # define P_BACK_XPM			"imgs/sprite/back.xpm"
 # define P_RIGHT_XPM		"imgs/sprite/right.xpm"
 # define P_LEFT_XPM			"imgs/sprite/left.xpm"
-# define O_EXIT				"imgs/sprite/o_exit.xpm"
-# define C_EXIT				"imgs/sprite/c_exit.xpm"
+# define O_EXIT				"imgs/exit/o_exit.xpm"
+# define C_EXIT				"imgs/exit/c_exit.xpm"
 
 /*
 	Terms

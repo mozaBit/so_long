@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 00:09:34 by bmetehri          #+#    #+#             */
-/*   Updated: 2023/11/13 00:35:29 by bmetehri         ###   ########.fr       */
+/*   Updated: 2023/11/13 17:40:50 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ void	check_rows(t_game *game)
 		if (game->map.map_strs[idx][0] != BOUNDARY)
 			error_print("Error: \
 			 Invalid Map: A boundary is missing in the first column", game);
-		if (game->map.map_strs[idx][game->map.columns - 1] != BOUNDARY)
+		else if (game->map.map_strs[idx][game->map.columns - 1] != BOUNDARY)
 			error_print("Error: \
-			 Invalid Map: A boundary is missing in the last column", game);
+Invalid Map: A boundary is missing in the last column", game);
 		idx++;
 	}
 }

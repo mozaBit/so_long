@@ -6,11 +6,17 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 03:31:03 by bmetehri          #+#    #+#             */
-/*   Updated: 2023/11/13 04:30:34 by bmetehri         ###   ########.fr       */
+/*   Updated: 2023/11/13 17:24:26 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
+
+void	print_movements(t_game *game);
+int		render_everything(t_game *game);
+void	render_spritesheet(t_game *game, t_image img, int j, int i);
+void	get_spritesheet(t_game *game, int i, int j);
+void	render_character(t_game *game, int j, int i);
 
 int	render_everything(t_game *game)
 {

@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 07:31:17 by bmetehri          #+#    #+#             */
-/*   Updated: 2023/11/12 23:09:32 by bmetehri         ###   ########.fr       */
+/*   Updated: 2023/11/13 18:18:26 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	num_occurances_c(char *str ,char c)
 void	error_print(char *msg, t_game *game)
 {
 	if (game->map_allocated == true)
-		free_map(game);
+		free_maps(game);
 	free(game);
 	ft_printf(P_RED"%s\n"RESET, msg);
 	exit(1);
@@ -70,4 +70,19 @@ void	check_map_errors(char *map, t_game *game)
 		}
 		idx++;
 	}
+}
+
+char	*ft_strappend(char **s1, const char *s2)
+{
+	char	*str;
+
+	if (!*s1 || !s2)
+		return (NULL);
+	str = (char *)ft_calloc((ft_strlen(*s1) + ft_strlen(s2)) + 1, sizeof(char));
+	if (!str)
+		return (NULL);
+	ft_strlcpy(str, *s1, ft_strlen(*s1) + 1);
+	ft_strlcat(str, s2, ft_strlen(*s1) + ft_strlen(s2) + 1);
+	free(*s1);
+	return (str);
 }

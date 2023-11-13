@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 04:32:15 by bmetehri          #+#    #+#             */
-/*   Updated: 2023/11/13 05:04:41 by bmetehri         ###   ########.fr       */
+/*   Updated: 2023/11/13 18:09:53 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ int		handle_input(int key, t_game *game)
 		player_move(game, game->map.character.y, game->map.character.x + 1, RIGHT);
 	if (key == KEY_SA || key == KEY_CA || key == KEY_LEFT)
 		player_move(game, game->map.character.y, game->map.character.x - 1, LEFT);
+	if (key == KEY_CQ || key == KEY_SQ || key == KEY_ESC)
+		close_game(game);
+	return (0);
 }
 
 void	player_move(t_game *game, int n_j, int n_i, int sprite)

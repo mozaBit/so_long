@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 08:06:34 by bmetehri          #+#    #+#             */
-/*   Updated: 2023/11/13 04:01:12 by bmetehri         ###   ########.fr       */
+/*   Updated: 2023/11/13 18:30:26 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	init_map(char *av, t_game *game)
 		line = get_next_line(fd);
 		if (line == NULL)
 			break ;
-		map = ft_strjoin(map, line);
+		map = ft_strappend(&map, line);
 		free(line);
 		game->map.rows++;
 	}
@@ -63,13 +63,15 @@ void	vars_init(t_game *game)
 	game->map.collectables = 0;
 	game->map.characters = 0;
 	game->map.exit = 0;
-	game->map.columns = ft_strlen3(game->map.map_strs[0]) - 1;
+	game->map.columns = ft_strlen(game->map.map_strs[0]) - 1;
 	game->movements = 0;
 	game->character_sheet = FRONT;
 }
 
 void	check_map(t_game *game)
 {
+	ft_printf("columns : %d\n", game->map.columns);
+	ft_printf("rows : %d\n", game->map.rows);
 	check_rows(game);
 	check_columns(game);
 	count_params(game);
