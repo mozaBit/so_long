@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 23:54:08 by bmetehri          #+#    #+#             */
-/*   Updated: 2023/11/12 23:10:37 by bmetehri         ###   ########.fr       */
+/*   Updated: 2023/11/13 00:06:30 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ typedef struct s_game
 	Parsing Map
 */
 void		ft_check_args(int ac, char **av, t_game *game);
+void		init_map(char *av, t_game *game);
+void		vars_init(t_game *game);
 void		create_map(t_data data, char *filename);
 char		*get_my_map_str(int fd);
 

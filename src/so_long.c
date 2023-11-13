@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 23:51:09 by bmetehri          #+#    #+#             */
-/*   Updated: 2023/11/12 22:02:56 by bmetehri         ###   ########.fr       */
+/*   Updated: 2023/11/13 00:07:31 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ int	main(int ac, char **av)
 	if (!game)
 		return (1);
 	ft_check_args(ac, av, game);
-
+	init_map(av[1], game);
+	vars_init(game);
+	check_map(game);
 	return (0);
 }
 
