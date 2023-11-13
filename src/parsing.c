@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 08:06:34 by bmetehri          #+#    #+#             */
-/*   Updated: 2023/11/13 18:30:26 by bmetehri         ###   ########.fr       */
+/*   Updated: 2023/11/13 19:20:03 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,6 @@ void	vars_init(t_game *game)
 
 void	check_map(t_game *game)
 {
-	ft_printf("columns : %d\n", game->map.columns);
-	ft_printf("rows : %d\n", game->map.rows);
 	check_rows(game);
 	check_columns(game);
 	count_params(game);
